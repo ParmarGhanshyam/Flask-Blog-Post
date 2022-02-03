@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Python Flask Upload and display image</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<p><h1 align="center">Python Flask Upload and display image</h1></p>
+<div class="container">
+<div class="row">
+    <h2>Select a file to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+    <!-- {% if filename %}
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+    {% endif %} -->
+    <form method="POST" action="/dashboard" enctype="multipart/form-data">
+        <div class="container"> 
+            <label>Title Of POST : </label> 
+            <input type="text" placeholder="Enter Title" name="title" required>
+            <label>Blog  : </label> 
+            <input type="text" placeholder="Enter Blog" name="blog" required>
+            <label>file : </label> 
+            <input type="file" name="file" class="form-control" autocomplete="off" required>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </div> 
+        <div class="container">
+            <a href="/logout" class="claas-btn">logout</a>
+        </div>
+    </form>
+</div>
+</div>
+</body>
+</html>
